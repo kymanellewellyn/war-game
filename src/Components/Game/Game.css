@@ -1,6 +1,29 @@
 
 .game{
-    background-color: wheat;
     display: flex;
-    color: '00a'
+    flex-direction: column;
+    color: '00a';
+}
+
+.players{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    margin-right: 10px;
+}
+
+.drawCards{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.cardsToWin{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.playerCard img{
+    width: 200px;
 }
