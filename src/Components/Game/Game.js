@@ -18,14 +18,15 @@ const game = (props) => {
                     <div>
                     <Button 
                     variant="success"
-                    size="sm">Play
+                    size="lg"
+                    id="play">Play
                     </Button>
                     </div>
                     <div class="playerCard"><img src={DeckBack} /></div>
                 </div>
 
                 <div class="cardsToWin">
-                    <div class="playerOneCardsToWin"><p>Cards to Win: {props.playerOne.deck.length} </p></div>
+                    <div class="playerOneCardsToWin"><p>Cards to Win: 26 </p></div>
                     <div class="ComputerCardsToWin"><p>Cards to Win: 26</p></div>
                 </div>
             </div>

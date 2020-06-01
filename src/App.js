@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import './App.css';
 import Game from './Components/Game/Game';
 import StartButton from './Components/StartButton/StartButton';
+import Button from 'react-bootstrap/Button';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Login from './Components/Login/Login';
+import SignUp from './Components/SignUp/SignUp';
+
 //import cardImages from './cardImages';
 
 
 
 class App extends Component {
   
-
-  
-/*            
-    
-*/
   constructor(){
     super();
     const CARDS = [
@@ -51,20 +51,19 @@ class App extends Component {
 
     this.state = {    
       playerOne: {
-        'wins': 0,
-        'deck': [],
-        'cardPlayed' : ''
+        wins: 0,
+        deck: [],
+        cardPlayed : '',
 
       },
       computer: {
-        'wins': 0,
-        'deck': [],
-        'cardPlayed' : '',
+        wins: 0,
+        deck: [],
+        cardPlayed: '',
       },
       buttonValue: 'New Game',
-      allCards : CARDS,
-      isPlaying : false
-      
+      allCards: CARDS,
+      isPlaying: false,
     }
     
   }
@@ -82,28 +81,25 @@ class App extends Component {
   }
 
   changeButtonValue = () => {
+    console.log(this.state.isPlaying)  //false
     if (this.state.buttonValue === 'New Game'){
       this.setState({
         buttonValue: 'End Game',
         isPlaying: true
-      })
-      //console.log(this.state.isPlaying)
-      //console.log(this.state.buttonValue)
+      });
+    console.log(this.state.isPlaying) //true
     } 
     else {
       this.setState({
         buttonValue: 'New Game',
         isPlaying: false
-      })
+      });
     }
-    
-    
 }
 
-  
   distributeCards = (allCards) => {
-    console.log(this.state.isPlaying)
-    console.log(this.state.buttonValue)
+    //console.log(this.state.isPlaying)
+    //console.log(this.state.buttonValue)
     if(this.state.isPlaying === true){
       let cards = this.shuffle(allCards);
       for (let i  = 0; i < cards.length; i++) {
@@ -115,10 +111,8 @@ class App extends Component {
       }
       this.setState(this.state);
     }
-    console.log(this.state.playerOne.deck);
-    
+    console.log(this.state.playerOne.deck);    
 }
-
 
   shuffle = (allCards) => {
     let tempDeck = allCards;
@@ -133,7 +127,12 @@ class App extends Component {
     return allCards;
   }
 
-
+/*
+startWarGame = (allCards) => {
+  this.changeButtonValue();
+  this.distributeCards(allCards);
+}
+*/
   war = (playerCard, computerCard, playerOneCards, copmuterCards) => {
     //two of the same cards
     
@@ -144,16 +143,51 @@ class App extends Component {
   
   render(){
     return(
+      
       <div className="App">
-          <StartButton 
-          distributeCards = {this.distributeCards} 
+    {/*  
+    <Router>
+    <div className="App">
+      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="navbar-brand" to={"/sign-in"}></Link>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-in"}>Login</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to={"/sign-up"}>Sign up</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div className="auth-wrapper">
+        <div className="auth-inner">
+          <Switch>
+            
+            <Route path="/sign-in" component={Login} />
+            <Route path="/sign-up" component={SignUp} />
+          </Switch>
+        </div>
+      </div>
+    </div></Router>
+    */}
+      
+      
+      
+      
+      <StartButton 
           buttonValue = {this.state.buttonValue} 
-          changeButtonValue = {this.changeButtonValue}
           allCards = {this.state.allCards} 
+          distributeCards = {this.distributeCards}
+          changeButtonValue={this.changeButtonValue}
           />
         {this.state.isPlaying ? 
           <Game 
-            playerOne = {this.state.playerOne} 
+            playerOne = {this.state.playerOne}
             computer = {this.state.computer}
             buttonValue = {this.state.buttonValue} 
             changeButtonValue = {this.changeButtonValue}

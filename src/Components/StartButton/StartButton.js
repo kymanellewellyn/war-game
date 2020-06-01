@@ -10,7 +10,7 @@ const startButton = (props) => {
             <Button
             variant="primary" 
             size="lg"
-            onClick={()=> {props.changeButtonValue(); props.distributeCards();}}
+            onClick={() => {props.changeButtonValue(); props.distributeCards(props.allCards)}}   
             >
               {props.buttonValue}
             </Button>

@@ -12,10 +12,21 @@
     margin-right: 10px;
 }
 
+.playerOne{
+    margin-right: 225px;
+    
+}
+
+.CPU {
+    
+    margin-left: 100px;
+}
+
 .drawCards{
     display: flex;
     flex-direction: row;
     align-self: center;
+    justify-content: space-between;
 }
 
 .cardsToWin{
@@ -24,6 +35,28 @@
     align-self: center;
 }
 
+.playerCard {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
 .playerCard img{
     width: 200px;
+}
+
+#play {
+    margin-top: 50px;
+}
+
+.playerOneCardsToWin {
+    font-weight: bolder;
+    margin-right: 175px;
+    margin-top: 100px;
+
+}
+
+.ComputerCardsToWin {
+    font-weight: bolder;
+    margin-left: 175px;
+    margin-top: 100px;
 }
